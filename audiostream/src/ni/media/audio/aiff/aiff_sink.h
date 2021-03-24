@@ -28,7 +28,7 @@
 #include <ni/media/iostreams/device/subview.h>
 #include <ni/media/iostreams/write_obj.h>
 
-#include <boost/optional.hpp>
+#include <optional>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -36,7 +36,7 @@ namespace detail
 {
 
 
-inline auto format_to_tag( const pcm::format& fmt ) -> boost::optional<uint32_t>
+inline auto format_to_tag( const pcm::format& fmt ) -> std::optional<uint32_t>
 {
     const auto number        = fmt.number();
     const auto bitwidth      = fmt.bitwidth();
@@ -70,7 +70,7 @@ inline auto format_to_tag( const pcm::format& fmt ) -> boost::optional<uint32_t>
         }
     }
 
-    return boost::none;
+    return {};
 }
 
 

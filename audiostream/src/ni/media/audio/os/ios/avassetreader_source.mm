@@ -28,10 +28,10 @@
 
 #include <boost/algorithm/clamp.hpp>
 #include <boost/format.hpp>
-#include <boost/optional.hpp>
 
 #include <algorithm>
 #include <cstring>
+#include <optional>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -77,8 +77,8 @@ private:
         size_t            m_length       = 0;
     };
 
-    boost::optional< SampleBuffer > m_currentSampleBuffer;
-    bool                            m_sourceExhausted = false;
+    std::optional< SampleBuffer > m_currentSampleBuffer;
+    bool                          m_sourceExhausted = false;
 };
 
 //----------------------------------------------------------------------------------------------------------------------

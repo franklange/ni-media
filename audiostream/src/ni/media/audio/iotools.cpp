@@ -97,7 +97,7 @@ auto ofstream_map() -> const std::map<std::string, ofstream_info::container_type
 //----------------------------------------------------------------------------------------------------------------------
 
 template <class Map>
-auto container_of( const std::string& url, const Map& map ) -> boost::optional<typename Map::mapped_type>
+auto container_of( const std::string& url, const Map& map ) -> std::optional<typename Map::mapped_type>
 {
     auto extension = extension_from_url( url );
     if ( extension.empty() )
@@ -141,7 +141,7 @@ std::string extension_from_url( const std::string& url )
 
 //----------------------------------------------------------------------------------------------------------------------
 
-auto ifstream_container( const std::string& url ) -> boost::optional<ifstream_info::container_type>
+auto ifstream_container( const std::string&& url ) -> std::optional<ifstream_info::container_type>
 {
     return container_of( url, ifstream_supported_formats() );
 }
@@ -149,7 +149,7 @@ auto ifstream_container( const std::string& url ) -> boost::optional<ifstream_in
 
 //----------------------------------------------------------------------------------------------------------------------
 
-auto ofstream_container( const std::string& url ) -> boost::optional<ofstream_info::container_type>
+auto ofstream_container( const std::string&& url ) -> std::optional<ofstream_info::container_type>
 {
     return container_of( url, ofstream_map() );
 }
@@ -158,7 +158,7 @@ auto ofstream_container( const std::string& url ) -> boost::optional<ofstream_in
 
 bool can_read_file( const std::string& url )
 {
-    return ifstream_container( url ) != boost::none;
+    return ifstream_container( url ).has_value();
 }
 
 //----------------------------------------------------------------------------------------------------------------------

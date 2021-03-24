@@ -22,10 +22,9 @@
 
 #pragma once
 
-#include <boost/optional.hpp>
-
 #include <cstdint>
 #include <map>
+#include <optional>
 
 namespace audio
 {
@@ -99,9 +98,9 @@ public:
     }
 
 private:
-    boost::optional<InstrumentChunk> m_instrument_chunk = boost::none;
-    boost::optional<SampleChunk>     m_sample_chunk     = boost::none;
-    boost::optional<SampleLoops>     m_sample_loops     = boost::none;
+    std::optional<InstrumentChunk> m_instrument_chunk{};
+    std::optional<SampleChunk>     m_sample_chunk{};
+    std::optional<SampleLoops>     m_sample_loops{};
 };
 
 } // namespace audio

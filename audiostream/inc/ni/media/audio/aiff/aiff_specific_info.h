@@ -22,10 +22,9 @@
 
 #pragma once
 
-#include <boost/optional.hpp>
-
 #include <cstdint>
 #include <map>
+#include <optional>
 
 namespace audio
 {
@@ -77,7 +76,7 @@ public:
 
 private:
     MarkerMap                        m_marker_map;
-    boost::optional<InstrumentChunk> m_instrument_chunk = boost::none;
+    std::optional<InstrumentChunk> m_instrument_chunk{};
 };
 
 } // namespace audio

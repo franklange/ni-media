@@ -31,7 +31,6 @@
 #include <ni/media/test_helper.h>
 
 #include <boost/filesystem.hpp>
-#include <boost/optional.hpp>
 #include <boost/range/algorithm/generate.hpp>
 #include <boost/range/iterator_range.hpp>
 #include <boost/tokenizer.hpp>
@@ -115,7 +114,7 @@ void reference_test( Stream&& stream, const boost::filesystem::path& file )
     auto generator_name = tokens[0];
     auto generator      = make_generator<value_type>( generator_name, info.num_channels(), info.sample_rate() );
 
-    ASSERT_TRUE( generator != boost::none ) << "Invalid generator: " << generator_name;
+    ASSERT_TRUE( generator.has_value() ) << "Invalid generator: " << generator_name;
 
     auto samples = std::vector<value_type>( info.num_samples() );
     stream >> samples;

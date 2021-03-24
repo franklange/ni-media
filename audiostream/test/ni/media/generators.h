@@ -25,10 +25,9 @@
 
 #include <ni/media/generators/modulated_sine.h>
 
-#include <boost/optional.hpp>
-
 #include <functional>
 #include <map>
+#include <optional>
 #include <string>
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -42,12 +41,12 @@ inline std::map<std::string, std::function<Value()>> generator_map( size_t num_c
 //----------------------------------------------------------------------------------------------------------------------
 
 template <class Value>
-inline boost::optional<std::function<Value()>> make_generator( const std::string& generator_name,
-                                                               size_t             num_channels,
-                                                               size_t             sample_rate )
+inline std::optional<std::function<Value()>> make_generator( const std::string& generator_name,
+                                                             size_t             num_channels,
+                                                             size_t             sample_rate )
 {
     const auto map = generator_map<Value>( num_channels, sample_rate );
     const auto it  = map.find( generator_name );
 
-    return ( it != map.end() ) ? boost::make_optional( it->second ) : boost::none;
+    return ( it != map.end() ) ? { it->second } : std::optional<std::function<Value()>>{};
 }

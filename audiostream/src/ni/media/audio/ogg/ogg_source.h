@@ -28,13 +28,13 @@
 
 #include <boost/algorithm/clamp.hpp>
 #include <boost/iostreams/categories.hpp>
-#include <boost/optional.hpp>
 
 #define OV_EXCLUDE_STATIC_CALLBACKS 1
 #include <vorbis/vorbisfile.h>
 #undef OV_EXCLUDE_STATIC_CALLBACKS
 
 #include <array>
+#include <optional>
 #include <stdexcept>
 #include <string>
 
@@ -64,7 +64,7 @@ public:
 private:
     Source                          m_source;
     std::streampos                  m_pos = 0;
-    boost::optional<OggVorbis_File> m_vorbisFile;
+    std::optional<OggVorbis_File>   m_vorbisFile;
     audio::ifstream_info            m_info;
 };
 

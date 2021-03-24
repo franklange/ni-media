@@ -25,16 +25,15 @@
 #include <ni/media/audio/ifstream_info.h>
 #include <ni/media/audio/ofstream_info.h>
 
-#include <boost/optional.hpp>
-
+#include <optional>
 #include <set>
 #include <string>
 
 namespace audio
 {
 
-auto ifstream_container( const std::string& url ) -> boost::optional<ifstream_info::container_type>;
-auto ofstream_container( const std::string& url ) -> boost::optional<ofstream_info::container_type>;
+auto ifstream_container( const std::string& url ) -> std::optional<ifstream_info::container_type>;
+auto ofstream_container( const std::string& url ) -> std::optional<ofstream_info::container_type>;
 
 auto is_itunes_url( const std::string& url ) -> bool;
 auto extension_from_url( const std::string& url ) -> std::string;
